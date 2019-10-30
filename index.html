@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scouter Readings</title>
+
+    <link rel="stylesheet" href="./assets/css/reset.css"> 
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Match Vegeta's Power Level: <span id="number-to-guess"></span></h1>
+          <img class="vegeta-scouter" src="http://1.bp.blogspot.com/-VVak3mXCOzw/TxZ0FSJpt9I/AAAAAAAAJos/3xjjLyHowZ8/s1600/extra142-Smell+my+finger.jpg" alt="vegeta" style="width: 340px; height: 230px;">
+         <br>
+          <p class="lead">Match the number or else!</p>
+        </div>
+      </div>
+
+      <div class="container" id="winCounter">
+          <h3>Times you've won: <span id="winCounter"></span></h3> 
+      </div>
+      <br>
+      <div class="container" id="lossCounter">
+          <h3>Times you've lost: <span id="lossCounter"></span></h3>
+      </div>
+      <br>
+
+
+      <div id="crystals" class="row">
+          <div class="col-md-3">
+              <img class="dragon-image-1" id="piccolo" src="https://static1.comicvine.com/uploads/original/11127/111277291/5113307-4059240-3059537-piccolo_price_by_amersss.jpg" alt="piccolo" style="width: 315px; width;height: 350px;">
+          </div>
+          <div class="col-md-3">
+            <img class="dragon-image-2" id="krillin" src="http://oyster.ignimgs.com/wordpress/stg.ign.com/2015/08/Krillin.jpg" alt="krillin" style="width;height: 350px;width: 315px;">
+        </div>
+        <div class="col-md-3">
+            <img class="dragon-image-3" id="masterRoshi" src="https://vignette3.wikia.nocookie.net/dragonball/images/a/a2/Master_Roshi_Anime.jpg/revision/latest/scale-to-width-down/350?cb=20170331075632" alt="master roshi" style="width;height: 350px;width: 314px;">
+        </div>
+        <div class="col-md-3">
+            <img class="dragon-image-4" id="trunks" src="http://pixel.nymag.com/imgs/daily/vulture/2015/08/12/dragon-ball-z-quiz/kid-trunks-b.jpg" alt="trunks" style="width;height: 350px;">
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    
+  
+
+
+
+
+
+    <!-- Note that this div is now empty. We will fill it dynamically -->
+    <div id="crystals">
+    </div>
+  
+
+
+
+
+
+    <!-- JAVASCRIPT  -->
+    <!-- ========================================= -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+
+        var targetNumber = 53;
+      
+        $("#number-to-guess").text(targetNumber);
+      
+        var counter = 0;
+      
+        // Now for the hard part. Creating multiple crystals each with their own unique number value.
+      
+        // We begin by expanding our array to include four options.
+        var numberOptions = [10, 5, 3, 7];
+      
+        // Next we create a for loop to create crystals for every numberOption.
+        for (var i = 0; i < numberOptions.length; i++) {
+      
+          // For each iteration, we will create an imageCrystal
+          var imageCrystal = $("<img>");
+      
+          // First each crystal will be given the class ".crystal-image".
+          // This will allow the CSS to take effect.
+          imageCrystal.addClass("crystal-image");
+            imageCrystal.addClass("diamond-pic");
+          // Each imageCrystal will be given a src link to the crystal image
+          imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+      
+          // Each imageCrystal will be given a data attribute called data-crystalValue.
+          // This data attribute will be set equal to the array value.
+          imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+      
+          // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+          $("#crystals").append(imageCrystal);
+        }
+      
+        // This time, our click event applies to every single crystal on the page. Not just one.
+        $(".crystal-image").on("click", function() {
+      
+          // Determining the crystal's value requires us to extract the value from the data attribute.
+          // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
+          // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
+          // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
+      
+          var crystalValue = ($(this).attr("data-crystalvalue"));
+          crystalValue = parseInt(crystalValue);
+          // We then add the crystalValue to the user's "counter" which is a global variable.
+          // Every click, from every crystal adds to the global counter.
+          counter += crystalValue;
+      
+          // All of the same game win-lose logic applies. So the rest remains unchanged.
+          alert("New score: " + counter);
+      
+          if (counter === targetNumber) {
+            alert("You win!");
+          }
+      
+          else if (counter >= targetNumber) {
+            alert("You lose!!");
+          }
+      
+        });
+    
+    </script>
+
+<script src="./assets/javascript/game.js"></script>
+  </body>
+</html>
