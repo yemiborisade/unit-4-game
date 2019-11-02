@@ -2,6 +2,26 @@
     text-align: center;
 }
 
+#jumboMe {
+    background-color: blue;
+}
+
+h1 {
+    font-family: 'Bowlby One SC', cursive;
+    color: yellow;
+}
+
+h3 {
+    border-style: double;
+    border-width: 10px;
+    border-color: indianred;
+}
+
+p {
+    font-family: 'Bowlby One SC', cursive;
+    color: red;
+}
+
 .dragon-image { 
     width: 250px;
     height: 250px;

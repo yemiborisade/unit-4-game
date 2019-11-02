@@ -1,14 +1,24 @@
 var counter = 0; 
 var wins = 0;
 var losses = 0; 
-var targetNumber = 80; 
+var targetNumber = Math.floor(Math.random() * 500);
 var winsElem = document.getElementsByClassName("winsCounter");
 var lossesElem = document.getElementsByClassName("lossesCounter");
 
-$("number-to-guess").text(targetNumber);
+$("#number-to-guess").text(targetNumber);
+console.log(targetNumber);
+
+
+var img1Value = Math.floor(Math.random() * 120);
+
+var img2Value = Math.floor(Math.random() * 120);
+
+var img3Value = Math.floor(Math.random() * 120);
+
+var img4Value = Math.floor(Math.random() * 120);
 
 $(".dragon-image-1").on("click", function() {
-    counter += 10;
+    counter += img1Value;
 
     alert("Your new score is " + counter);
 
@@ -28,7 +38,7 @@ $(".dragon-image-1").on("click", function() {
 });
 
 $(".dragon-image-2").on("click", function() {
-    counter += 8;
+    counter += img2Value;
 
     alert("Your new score is " + counter);
 
@@ -46,7 +56,7 @@ $(".dragon-image-2").on("click", function() {
 });
 
 $(".dragon-image-3").on("click", function() {
-    counter += 6;
+    counter += img3Value;
 
     alert("Your new score is " + counter);
 
@@ -64,7 +74,7 @@ $(".dragon-image-3").on("click", function() {
 });
 
 $(".dragon-image-4").on("click", function() {
-    counter += 4;
+    counter += img4Value;
 
     alert("Your new score is " + counter);
 
